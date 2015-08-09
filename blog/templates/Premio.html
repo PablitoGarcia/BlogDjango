@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <title>PREMIO</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+   <link rel="shortcut icon" href="{% static 'css/img/icono.png' %}"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">STGB</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'app_blog:home'%}">Home</a></li>
+          <li class="active"><a href="{% url 'app_blog:principal'%}">Post</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+   <div class="container">
+  <div class="jumbotron">
+    <h1>Has Ganado</h1>      
+    <p>Por haber entrado a este blog, has ganado interesantes premios.Solo apreta en PREMIOS y disfruta.</p>      
+  </div>
+    </div>
+     <div id="divB" style="width:800px; height:400px  margin-left: 181px;">
+          <input type=button class="btn btn-success" value="PREMIO" style="position:relative;" onmouseover="cambiarPos(this)" onclick="premio();">
+          </div>
+    </body>
+    
+    <script>
+    var tired =0;
+    function cambiarPos(obj){
+        var dboto = document.getElementById("divB");
+        var x = dboto.offsetHeight + obj.height + 5;
+        var y = dboto.offsetWidth + obj.width + 5;
+        var randomx = Math.floor(Math.random()*x+1);
+        var randomy = Math.floor(Math.random()*y+1);
+        
+        obj.style.top = randomx + 'px';
+        obj.style.left = randomy + 'px';
+        
+        
+        tired++
+        
+       
+    }
+    function premio(){
+     texto="Has sido engañado,eres muy inocente.";
+     alert(texto);
+        
+    }
+     
+    
+     </script>
+
+</html>

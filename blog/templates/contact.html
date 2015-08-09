@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+{% block content %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <title>Formulario Contacto</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="shortcut icon" href="{% static 'css/img/icono.png' %}"/>
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">STGB</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'app_blog:home'%}">Home</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Contactame</h1>      
+    <p>Envianos tu comentario sobre la pagina, siempre es bueno una critica...</p>      
+  </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h3 class="section-heading">Envianos un mensaje!</h3>
+                 {{enviado}}
+            
+                <form action="{% url 'app_blog:contactame' %}" method="POST" name="sentMessage" id="contactForm">
+                    {% csrf_token %} 
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Nombre</label>
+                            <input name="nombre" type="text" class="form-control" placeholder="Nombre" id="name">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Email</label>
+                            <input name="mail" type="email" class="form-control" placeholder="Mail" id="email">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Telefono</label>
+                            <input name="celu" type="tel" class="form-control" placeholder="Telefono" id="phone">
+                            
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Mensaje</label>
+                            <textarea name="mensaje" rows="5" class="form-control" placeholder="Mensaje" id="message">
+                            </textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <br>
+                    
+                    <div class="row">
+                        <div class="content">
+                            <input type="submit" class="btn btn-default"></input>
+                        </div>
+                    
+                </form>
+            </div>
+        </div>
+{% endblock %}

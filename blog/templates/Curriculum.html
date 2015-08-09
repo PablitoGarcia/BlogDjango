@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <title>Curriculum Vitae</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+  <link rel="shortcut icon" href="{% static 'css/img/icono.png' %}"/>
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">STGB</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'app_blog:home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'app_blog:principal'%}">Post</a></li>  
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container">
+  <div class="jumbotron">
+    <h1>Curriculum Vitae</h1>      
+    <p>Estudiante Secundario Tecnico</p>      
+  </div>
+    </div>
+    <div class="container">
+            
+   
+</div>
+   
+    
+      <div class="well" style="margin-left=50px; background-color: #DDDBDB;height: 56px;
+width: 875px; margin-left: 113px;">Datos Personales:</div>
+    <div style="margin-left: 125px;">
+<p >
+Nombre : Pablo Santiago 
+<br>
+Apellido : Garcia
+<br>
+Telefono: 4563233
+<br>
+Dni : 41033246
+<br>
+Experiencias Laborales : Participacion en Expo Tronica. 
+<br>
+Estado Actual : Cursando 6° Especialidad Programación.
+</p>
+    </div>
+    </div>
+    <img src="{% static 'css/img/santi.jpg' %}" class="img-rounded" alt="Cinque Terre" width="304" height="236" style="margin-top: -208px; margin-left: 994px; float: left;">
+    </body>
+</html>

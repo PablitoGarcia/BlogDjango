@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <title>Conversor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+  <link rel="shortcut icon" href="{% static 'css/img/icono.png' %}"/>
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">STGB</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'app_blog:home'%}">Home</a></li>
+        <li class="active"><a href="{% url 'app_blog:principal'%}">Post</a></li>  
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container">
+  <div class="jumbotron">
+    <h1>Conversor</h1>      
+    <p>Indispensable para una nueva inversion en el extranjero.</p>      
+  </div>
+    </div>
+    <div style="height: 245px; width: 477px; margin-top: 12px; color: black;margin-left: 389px;">
+     
+     <div class="form-group" >
+            De:
+         <select class="form-control" id="select1" style="background-color: #C6C6C6;color: black;">
+             <option value="ARS">Pesos</option>
+             <option value="USD">Dolares</option>
+             <option value="CLP">Chilenos</option>
+             <option value="UYU">Uruguayos</option>
+             <option value="EUR">Euro</option>
+             <option value="BRL">Reales</option>     
+         </select>
+                 </form>
+
+         </div>
+         <div class="form-group" >
+     
+      <textarea class="form-control" rows="1" id="cuadro1"></textarea>
+    </div>
+     <div class="form-group" >
+         <form name="formul2">
+            A:
+         <select class="form-control" id="select2" style="background-color: #C6C6C6;color: black;">
+             <option value="ARS">Pesos</option>
+             <option value="USD">Dolares</option>
+             <option value="CLP">Chilenos</option>
+             <option value="UYU">Uruguayos</option>
+             <option value="EUR">Euro</option>
+             <option value="BRL">Reales</option>     
+         </select>
+         </div>
+         
+            <div class="form-group">
+     
+      <textarea class="form-control" rows="1" id="cuadro2"></textarea>
+    </div>
+          
+     </form> 
+    <div style="margin-left:80px;">     
+         <input type="button" value="Conversion" class = "btn btn-primary" onclick="convertir()" style="width: 160px;"/>
+         <input type="button" value="Limpiar" class = "btn btn-primary" onclick="clean()" style="width: 160px;"/> 
+    </div>
+   
+    </div>
+    </body>
+<script>
+            
+
+var relacion = [ 1.0, 8.92, 0.014, 0.33, 10.04, 2.96]
+    function convertir(){
+        var cuadro1 = parseFloat(document.getElementById("cuadro1").value);
+        var cuadro2 = document.getElementById("cuadro2");
+        var select1 = document.getElementById("select1").selectedIndex;
+        var select2 = document.getElementById("select2").selectedIndex;
+        var res = (relacion[select1]* cuadro1) / relacion[select2];
+        cuadro2.value = res.toFixed(5);
+        
+    }
+    
+    
+    function clean(){
+     cuadro1.value= "";
+     cuadro2.value= "";    
+    }
+     </script>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <title>Galeria</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <link rel="shortcut icon" href="{% static 'css/img/icono.png' %}"/>    
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     <style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+  </style>
+    
+        <style>
+            .progress {
+                height: 57px;
+               
+                background-color: transparent;
+            }
+            .progress > svg {
+                height: 100%;
+                display: block;
+            }
+        </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">STGB</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'app_blog:home'%}">Home</a></li>
+        <li class="active"><a href="{% url 'app_blog:principal'%}">Post</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    <div class="container">
+  <div class="jumbotron">
+    <h1>Galeria</h1>      
+    <p>Indispensable para una nueva inversion en el extranjero.</p>      
+  </div>
+    </div>
+     <div class="container" style="width:1180px; height:151px; margin-left:179px">
+  <br>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="{% static 'css/img/fondo1.jpg' %}" alt="Chania" width="460" height="345">
+      </div>
+
+      <div class="item">
+        <img src="{% static 'css/img/fondo2.jpg' %}" alt="Chania" width="460" height="345">
+      </div>
+    
+      <div class="item">
+        <img src="{% static 'css/img/fondo3.jpg' %}" alt="Flower" width="460" height="345">
+      </div>
+
+      <div class="item">
+        <img src="{% static 'css/img/fondo4.jpg' %}" alt="Flower" width="460" height="345">
+      </div>
+    </div>
+
+
+  </div>
+</div>
+  <div class="example-container" id="example-clock-container" style="width: 75px; position: absolute; float: left; height: 0px; margin-left: 733px; margin-top: 133px;"></div>
+
+        
+        <script src="{% static 'js/progressbar.js' %}"></script>
+
+        <script src="{% static 'js/main.js' %}">
+
+    </script>
+    
+    </body>
+
+</html>

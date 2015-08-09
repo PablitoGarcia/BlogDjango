@@ -1,0 +1,67 @@
+{% block content %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+
+  <title>Post</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+  <link rel="shortcut icon" href="{% static 'css/img/icono.png' %}"/>
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    
+</head>
+<body>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">STGB</a>
+            </div>
+            <div>
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="{% url 'app_blog:home'%}">Home</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="container">
+          <div class="jumbotron">
+            <h1>Post</h1>      
+            <p>Unicos e Importantes.</p>      
+          </div>
+
+        <div class="row">
+            <div class="col-md-3">
+
+                {% for post in posts %}
+                <div class="post-preview">
+                    <a href="{% url 'app_blog:vermipost' post.id %}">
+                        <h1 class="post-title">
+                            {{post.titulo}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{post.resumen}}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posteado por {{post.autor}}</p>
+                </div>
+                <hr>
+                {% endfor %}
+
+
+            </div>
+        </div>
+
+    
+</body>
+</html>
+    
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+    <title>Cronometro</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+  <link rel="shortcut icon" href="{% static 'css/img/icono.png' %}"/>
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+
+<script>
+	var inicio=0;
+	var vuelta=0;
+	var timeout=0;
+
+	function empezarDetener(elemento)
+	{
+        if(timeout==0)
+		{
+			elemento.value="Detener";
+			inicio=vuelta=new Date().getTime();
+			document.getElementById("tiempos").innerHTML="<div></div>";
+			funcionando();
+			document.getElementById("vuelta").disabled=false;
+		}else{
+			elemento.value="Empezar";
+			document.getElementById("vuelta").disabled=true;
+			clearTimeout(timeout);
+			timeout=0;
+		}
+	}
+	function funcionando()
+	{
+		var actual = new Date().getTime();
+		var diff=new Date(actual-inicio);
+		var result=LeadingZero(diff.getUTCHours())+":"+LeadingZero(diff.getUTCMinutes())+":"+LeadingZero(diff.getUTCSeconds());
+		document.getElementById('crono').innerHTML = result;
+		timeout=setTimeout("funcionando()",1000);
+	}
+	function mostrarValorActual()
+	{
+		var actual=new Date().getTime();
+		var diff=new Date(actual-vuelta);
+		vuelta=new Date().getTime();
+		var ultimo=document.createElement("div");	             ultimo.innerHTML=LeadingZero(diff.getUTCHours())+":"+LeadingZero(diff.getUTCMinutes())+":"
++LeadingZero(diff.getUTCSeconds())+","+diff.getUTCMilliseconds();
+		document.getElementById("tiempos").insertBefore(ultimo,document.getElementById("tiempos").getElementsByTagName("div")[0]);
+
+	}
+	function LeadingZero(Time) {
+		return (Time < 10) ? "0" + Time : + Time;
+	}
+	</script>
+	<style>
+        
+	.crono_wrapper {float:left;text-align:center;width:200px;}
+	#tiempos {float:left;}
+
+	</style>
+
+</head>
+<body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">STGB</a>
+            </div>
+            <div>
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="{% url 'app_blog:home'%}">Home</a></li>
+                <li class="active"><a href="{% url 'app_blog:principal'%}">Post</a></li>  
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <div class="container">
+          <div class="jumbotron">
+            <h1>Cronometro Deportivo</h1>      
+            <p>Nada es imposible, tu puedes.</p>      
+          </div>
+            </div>
+
+
+        <h1 style="margin-left: 782px;">Contador de vueltas</h1>
+
+
+
+        <div class="crono_wrapper" style="margin-left: 500px;">
+
+            <h2 id='crono' style="margin-left: -135px;">00:00:00</h2>
+
+            <input type="button" class = "btn btn-primary"value="Empezar" onclick="empezarDetener(this);" style="width: 165px; margin-left: -134px;">
+
+            <input type="button" value="Vuelta" class = "btn btn-primary" id="vuelta" onclick="mostrarValorActual();" disabled style="width: 165px;">
+
+        </div>
+
+        <div id="tiempos" style="margin-left: 200px;"><div></div></div>
+
+
+
+</body>
+
+</html>

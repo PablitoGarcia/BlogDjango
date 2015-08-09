@@ -1,0 +1,132 @@
+{% load staticfiles %}
+<HTML>
+<HEAD>
+
+<title>Calculadora</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+  <link rel="shortcut icon" href="{% static 'css/img/icono.png' %}"/>
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+
+<script language="LiveScript">
+<!-- 
+
+function addChar(input, character)
+{
+    if(input.value == null || input.value == "0")
+        input.value = character
+    else
+        input.value += character
+}
+
+function deleteChar(input)
+{
+    input.value = input.value.substring(0, input.value.length - 1)
+}
+
+function changeSign(input)
+{
+    // could use input.value = 0 - input.value, but let's show off substring
+    if(input.value.substring(0, 1) == "-")
+	input.value = input.value.substring(1, input.value.length)
+    else
+	input.value = "-" + input.value
+}
+
+function compute(form) 
+{
+	form.display.value = eval(form.display.value)
+}
+
+function square(form) 
+{
+	form.display.value = eval(form.display.value) * eval(form.display.value)
+}
+
+function checkNum(str) 
+{
+	for (var i = 0; i < str.length; i++) {
+		var ch = str.substring(i, i+1)
+		if (ch < "0" || ch > "9") {
+			if (ch != "/" && ch != "*" && ch != "+" && ch != "-" 
+				&& ch != "(" && ch!= ")") {
+				alert("invalid entry!")
+				return false
+			}
+		}
+	}
+	return true
+}
+
+<!--  -->
+</script>
+
+
+</HEAD>
+
+<BODY bgcolor="white">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">STGB</a>
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'app_blog:home'%}">Home</a></li>
+              <li class="active"><a href="{% url 'app_blog:principal'%}">Post</a></li>   
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Calculadora</h1>      
+        <p>La kriptonita de las Matematicas.</p>      
+      </div>
+        </div>
+
+    <form>
+    <div  class = "content" align = center>
+
+    <input class="resultado" id="display" type="text" value="0"/>
+
+    <section>     
+            <br>
+
+            <div>     
+            <input type="button" class = "btn btn-default" id = "btn1" onClick="addChar(this.form.display, '1')" value="1"/>
+            <input type="button"  class = "btn btn-default" id = "btn2" onClick="addChar(this.form.display, '2')" value="2"/> 
+            <input type="button"  class = "btn btn-default" id = "btn3" onClick="addChar(this.form.display, '3')" value="3"/>
+            <input type="button"  class = "btn btn-default" id = "btnm" onClick="addChar(this.form.display, '+')" value="+"/>
+            </div>
+            <br>
+             <div>
+            <input type="button"  class = "btn btn-default" id = "btn4" onClick="addChar(this.form.display, '4')" value="4"/> 
+            <input type="button"  class = "btn btn-default" id = "btn5" onClick="addChar(this.form.display, '5')" value="5"/> 
+            <input type="button"  class = "btn btn-default" id = "btn6" onClick="addChar(this.form.display, '6')" value="6"/>
+            <input type="button"  class = "btn btn-default" id = "btnme" onClick="addChar(this.form.display, '-')" value="-"/>
+            </div>
+            <br>
+            <div>
+            <input type="button" class = "btn btn-default" id = "btn7" onClick="addChar(this.form.display, '7')" value="7"/> 
+            <input type="button" class = "btn btn-default" id = "btn8" onClick="addChar(this.form.display, '8')" value="8"/> 
+            <input type="button" class = "btn btn-default" id = "btn9" onClick="addChar(this.form.display, '9')" value="9"/>   
+            <input type="button" class = "btn btn-default" id = "btnb" onClick="addChar(this.form.display, '/')" value="/"/>
+             </div>    
+            <br>
+            <div>
+            <input type="button"  class = "btn btn-primary" id = "btborrar" onClick="this.form.display.value = 0 " value = "C"/>
+            <input type="button"  class = "btn btn-default" id = "btn0" onClick="addChar(this.form.display, '0')" value="0"/>
+            <input type="button"  class = "btn btn-default" id = "btne" onClick="if (checkNum(this.form.display.value))
+        { compute(this.form) }" value="="/>
+            <input type="button"  class = "btn btn-default" id = "btnp" onClick="addChar(this.form.display, '*')" value="*"/>
+
+     </div>
+                 </section>
+                </form>
+
+</body>
+</html>

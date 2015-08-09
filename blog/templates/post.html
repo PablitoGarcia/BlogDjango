@@ -1,0 +1,121 @@
+{% block content %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <title>Post</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+  <link rel="shortcut icon" href="{% static 'css/img/icono.png' %}"/>
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">STGB</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'app_blog:home'%}">Home</a></li>
+          <li class="active"><a href="{% url 'app_blog:principal'%}">Post</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Post</h1>      
+    <p>Unicos e Importantes.</p>      
+  </div>
+
+<article style="margin-left: 245px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+               
+                <h1  style="color:#35C0ED" class="section-heading">{{post.titulo}}</h2>
+
+
+                <h5 class="section-heading">Posted by {{post.autor}}</h5>
+                <h3 style="color:#35C0ED" class="section-heading">{{post.fecha}}</h3>
+
+                <p>{{post.contenido}} </p>
+
+
+
+            </div>
+        </div>
+    </div>
+</article>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <h3 class="section-heading">Comentarios</h3>
+
+        {% csrf_token %} 
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>Nombre</label>
+                <input name="nombre" type="text" class="form-control" placeholder="Nombre" id="name" >
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>Mensaje</label>
+                <textarea name="mensaje" rows="5" class="form-control" placeholder="Mensaje" id="message" ></textarea>
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <button id="send_ajax" class="btn btn-primary">Enviar Comentario</button>
+            </div>
+        </div>
+
+    </div>
+    <div id="mensajes"  class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {% include "mensajes.html" %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+    $("#send_ajax").click(function(){    
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id:'{{post.id}}',
+            nombre:$('#name').val(),
+            mensaje:$('#message').val(),
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "{% url 'app_blog:save_message' %}",
+            data: data,
+            success: function(result){
+                $("#mensajes").html(result);
+            },
+            error: function(err){
+                console.log("ERRRORRRR");
+                console.log(err.responseText);
+
+
+            },
+        });
+    });
+
+
+
+
+</script>
+
+
+{% endblock %}

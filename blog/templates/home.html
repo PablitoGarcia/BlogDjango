@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <title>Inicio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+  <link rel="shortcut icon" href="{% static 'css/img/icono.png' %}"/>
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" >STGB</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a>Home</a></li>
+        <li class="active"><a href="{% url 'app_blog:principal'%}">Post</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container">
+  <div class="jumbotron">
+    <h1>Inicio</h1>      
+    <p>Pablo Santiago Garcia</p>      
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Advertencia previa. El objetivo de estas líneas es más modesto de lo que su título puede sugerir. Intentan sólo una comparación material, entre el texto del Popol Vuh y el del Génesis, para constatar una serie de semejanzas y desemejanzas, cuyo sentido pleno ya no me considero capaz de establecer. En definitiva es la lectura de un occidental, habituado a la Biblia, que se acerca al libro con curiosidad y simpatía; sin conocimiento directo de las sociedades en que ha nacido; sin competencias para contextuarlo, ni tampoco para fijar exactamente su texto. Pero lamentando que sobre el Popol Vuh se haya escrito mucho más desde la antropología cultural que desde la teología.</p>
+    </div>
+    <div class="col-md-3"> 
+      <p>Acepto pues la información habitual de que el texto fue escrito poco después de la conquista (en la primera mitad del XVI) por un grupo de sabios quichés que recogían tradiciones mucho más antiguas, conservadas por memoria oral, y quizá también con la ayuda de códices de amate. El textus receptus u oficial fue transmitido por fray Francisco de Ximénez, a quien los indígenas lo confiaron por amistad en 1688. Existe la sospecha de que Ximénez introdujo algunas correcciones o añadidos. También parece lo más coherente que dichas modificaciones -si existieron- se hiciesen para cristianizar al libro y no para desautorizarlo. Así lo sugiere la amistad del fraile con los nativos, y su deseo de salvar al texto, frente a otros libros sagrados precolombinos, que fueron destruidos por el fanatismo de los conquistadores.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div class="col-md-3"> 
+      <p>A pesar de todo, es así como el Popol Vuh ha seguido presente entre los pueblos mayas hasta hoy, y ello puede dar cierta utilidad a este esfuerzo comparativo.Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.Acepto pues la información habitual de que el texto fue escrito poco después de la conquista (en la primera mitad del XVI) por un grupo de sabios quichés que recogían tradiciones mucho más antiguas, conservadas por memoria oral, y quizá también con la ayuda de códices de amate. El textus receptus u oficial fue transmitido por fray Francisco de Ximénez, a quien los indígenas lo confiaron por amistad en 1688.</p>
+    </div>
+    <div class="col-md-3">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a>Menu</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Aplicaciones<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'app_blog:cal' %}">Calculadora</a></li>
+            <li><a href="{% url 'app_blog:conv' %}">Conversor</a></li>
+            <li><a href="{% url 'app_blog:crono' %}">Cronometro</a></li>
+            <li><a href="{% url 'app_blog:img' %}">Galeria</a></li>
+            <li><a href="{% url 'app_blog:price' %}">Premio</a></li>  
+          </ul>
+        </li>
+        <li><a href="{% url 'app_blog:contactame' %}">Formulario Contacto</a></li>
+        <li><a href="{% url 'app_blog:cv' %}">Curriculum Vitae</a></li>
+      </ul>
+    </div>
+    <div class="clearfix visible-lg"></div>
+  </div>
+</div>
+
+</body>
+</html>
